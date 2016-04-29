@@ -32,14 +32,16 @@ function showWeather(evt) {
 
     // TODO: request weather with that URL and show the forecast in #weather-info
 
-    $.get(url, getWeather);
+    $.get(url, function (weatherDict) {
+        $('#weather-info').html(weatherDict['forecast'])
+    });
 } 
 
-function getWeather(weatherDict) {
-    // console.log(weatherDict)
-    var forecast =  weatherDict['forecast']
-    $('#weather-info').html(forecast)
-}  
+// function getWeather(weatherDict) {
+//     // console.log(weatherDict)
+//     var forecast =  weatherDict['forecast']
+//     $('#weather-info').html(forecast)
+// }  
 
 $("#weather-form").on('submit', showWeather);
 
